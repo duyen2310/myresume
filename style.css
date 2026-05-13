@@ -12148,6 +12148,66 @@ a.text-dark:focus,a.text-dark:hover {
     content: "\F267"
 }
 
+.motion-item {
+    opacity: 0;
+    filter: blur(4px);
+    transition: transform .8s cubic-bezier(.2, .72, .2, 1), opacity .7s ease, filter .7s ease;
+    transition-delay: var(--motion-delay, 0ms);
+    will-change: transform, opacity, filter;
+}
+
+.motion-item.fx-rise {
+    transform: translate3d(0, 44px, 0) scale(.98);
+}
+
+.motion-item.fx-left {
+    transform: translate3d(-42px, 18px, 0) scale(.985);
+}
+
+.motion-item.fx-right {
+    transform: translate3d(42px, 18px, 0) scale(.985);
+}
+
+.motion-item.fx-zoom {
+    transform: translate3d(0, 24px, 0) scale(.93);
+}
+
+.motion-item.fx-tilt {
+    transform: perspective(900px) rotateX(7deg) translate3d(0, 34px, 0) scale(.97);
+}
+
+.motion-item.is-in-view {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate3d(0, 0, 0) scale(1) rotateX(0deg);
+}
+
+@media (max-width: 768px) {
+    .motion-item,
+    .motion-item.fx-rise,
+    .motion-item.fx-left,
+    .motion-item.fx-right,
+    .motion-item.fx-zoom,
+    .motion-item.fx-tilt {
+        transform: translate3d(0, 26px, 0) scale(.99);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .motion-item,
+    .motion-item.fx-rise,
+    .motion-item.fx-left,
+    .motion-item.fx-right,
+    .motion-item.fx-zoom,
+    .motion-item.fx-tilt,
+    .motion-item.is-in-view {
+        opacity: 1;
+        filter: none;
+        transform: none;
+        transition: none;
+    }
+}
+
 .fa-chrome:before {
     content: "\F268"
 }
